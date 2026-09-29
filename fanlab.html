@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FanLab — Turn Superfans into Sustainable Revenue</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2302050d'/%3E%3Crect x='3' y='3' width='58' height='58' rx='12' fill='none' stroke='%2300e5ff' stroke-width='3'/%3E%3Cpath d='M22 46V18h22v6H29v5h12v6H29v11z' fill='%2300e5ff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--img-hero:linear-gradient(0deg,rgba(2,5,13,.9) 0,transparent 30%),linear-gradient(90deg,rgba(2,5,13,.9) 0,rgba(2,5,13,.58) 45%,rgba(0,70,100,.12) 100%),url(https://images.pexels.com/photos/21790480/pexels-photo-21790480.jpeg?auto=compress&cs=tinysrgb&w=2000) center 35%/cover;--bg:#02050d;--bg2:#06111c;--cy:#00e5ff;--te:#00c4cc;--tx:#fff;--mu:#9fb3c2;--ln:rgba(0,229,255,.28)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--tx);font-family:Inter,system-ui,sans-serif;line-height:1.5;overflow-x:hidden}
+h1,h2{font-family:Anton,Impact,'Arial Narrow',sans-serif;font-weight:400;text-transform:uppercase;line-height:1.02;letter-spacing:.5px}
+h1{font-size:clamp(2.8rem,8vw,6rem)}h2{font-size:clamp(2rem,5vw,3.6rem)}
+em{font-style:normal;color:var(--cy)}
+p{color:#dbe6ee}
+section{padding:90px 6vw;position:relative;border-bottom:1px solid rgba(0,229,255,.08)}
+.w{max-width:1150px;margin:0 auto}
+.bar{width:90px;height:4px;background:var(--cy);margin:22px 0;box-shadow:0 0 14px var(--cy)}
+nav{position:fixed;top:0;left:0;right:0;z-index:9;display:flex;justify-content:space-between;align-items:center;padding:12px 5vw;background:rgba(2,5,13,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--ln)}
+.logo{font-family:Anton;font-size:1.5rem;letter-spacing:1px}.logo em{color:var(--cy)}
+nav ul{display:flex;gap:22px;list-style:none;align-items:center}
+nav a{color:#cfe;text-decoration:none;font-size:.85rem;font-weight:600}
+nav a:hover{color:var(--cy)}
+.btn{display:inline-block;background:var(--cy);color:#001318!important;font-weight:800;padding:14px 30px;border-radius:40px;text-decoration:none;border:0;cursor:pointer;font-size:1rem;box-shadow:0 0 24px rgba(0,229,255,.5);transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 38px rgba(0,229,255,.85)}
+#lang{background:none;border:1px solid var(--cy);color:var(--cy);border-radius:20px;padding:6px 14px;font-weight:800;cursor:pointer}
+#lang:hover{background:var(--cy);color:#001318}
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:110px;background:var(--img-hero),conic-gradient(from 160deg at 72% -8%,transparent,rgba(0,229,255,.3) 6%,transparent 14%,rgba(0,229,255,.2) 22%,transparent 30%),radial-gradient(circle at 78% 35%,rgba(0,229,255,.28),transparent 45%),radial-gradient(circle at 20% 90%,rgba(0,120,160,.25),transparent 40%),var(--bg)}
+.hero p.sub{font-size:1.25rem;max-width:520px;margin-bottom:34px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:50px}
+.stat b{display:block;font-family:Anton;font-size:clamp(2.2rem,5vw,3.6rem);color:var(--cy);font-weight:400;line-height:1}
+.stat span{color:#dbe6ee;font-size:.95rem}
+.stats.big b{color:#fff;font-size:clamp(3rem,7vw,5.5rem)}.stats.big .stat:nth-child(2) b{color:var(--cy)}
+.stat{border-left:1px solid var(--ln);padding-left:16px}
+.hero .w{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
+.hero .stats{grid-column:1/-1}
+.hero-art{justify-self:center;width:min(100%,290px);border-radius:34px;border:2px solid var(--cy);background:#040c15;box-shadow:0 0 70px rgba(0,229,255,.4);padding:12px;overflow:hidden}
+.hero-art svg{display:block;width:100%;border-radius:22px}
+.hero-art .chip{display:flex;justify-content:space-between;background:#0a1a28;border-radius:10px;padding:8px 12px;margin-top:8px;font-size:.75rem;font-weight:800}.hero-art .chip b{color:var(--cy)}
+.crowd{overflow:hidden;padding-bottom:170px}
+.crowd:after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;z-index:1;pointer-events:none;
+background:radial-gradient(circle at 17px 16px,#010306 9px,transparent 10px) 0 100%/34px 60px repeat-x,radial-gradient(ellipse 17px 30px at 17px 60px,#010306 98%,transparent 100%) 0 100%/34px 60px repeat-x,radial-gradient(circle at 20px 12px,#04131d 11px,transparent 12px) 17px 100%/46px 80px repeat-x,radial-gradient(ellipse 22px 38px at 20px 80px,#04131d 98%,transparent 100%) 17px 100%/46px 80px repeat-x,linear-gradient(transparent,rgba(0,229,255,.18))}
+.art{height:120px;margin:-28px -28px 20px;border-radius:18px 18px 0 0;border-bottom:1px solid var(--ln);position:relative;overflow:hidden}
+.a1{background:conic-gradient(from 200deg at 50% -10%,transparent,rgba(0,229,255,.55),transparent 18%,rgba(0,229,255,.35) 28%,transparent 40%),radial-gradient(circle at 70% 60%,#0d4a60,#040c15)}
+.a2{background:radial-gradient(circle,var(--cy) 3px,transparent 4px) 20px 20px/56px 48px,radial-gradient(circle,#1b7590 2px,transparent 3px) 48px 44px/56px 48px,#040c15}
+.a3{background:linear-gradient(135deg,rgba(0,229,255,.25),transparent 60%),repeating-linear-gradient(90deg,rgba(0,229,255,.12) 0 2px,transparent 2px 14px),#040c15}
+.a3:after{content:"VIP ACCESS";position:absolute;inset:0;display:grid;place-items:center;font-family:Anton;letter-spacing:4px;color:var(--cy);text-shadow:0 0 18px var(--cy);font-size:1.6rem}
+.flow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:40px 0}
+.flow div{padding:18px 26px;border:1px solid var(--ln);border-radius:14px;background:var(--bg2);font-weight:800;font-size:.9rem;letter-spacing:1px}
+.flow div:last-child{color:var(--cy);border-color:var(--cy);box-shadow:0 0 20px rgba(0,229,255,.3)}
+.flow span{color:var(--cy);font-size:1.6rem}
+.big-q{font-family:Anton;text-transform:uppercase;font-size:clamp(1.5rem,3.4vw,2.6rem);color:var(--cy);line-height:1.1;margin-top:20px}
+.grid{display:grid;gap:22px;margin-top:38px}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g2{grid-template-columns:1fr 1fr}
+.card{background:linear-gradient(160deg,var(--bg2),#030913);border:1px solid var(--ln);border-radius:18px;padding:28px;transition:.25s}
+.card:hover{border-color:var(--cy);box-shadow:0 0 28px rgba(0,229,255,.2)}
+.card h3{color:var(--cy);font-size:1.2rem;text-transform:uppercase;margin-bottom:8px;font-weight:800}
+.card .ic{width:54px;height:54px;border:2px solid var(--cy);border-radius:50%;display:grid;place-items:center;color:var(--cy);font-size:1.4rem;margin-bottom:14px}
+.card p{font-size:.95rem;color:var(--mu)}
+.center{text-align:center}
+.mock{display:grid;grid-template-columns:1fr 280px 1fr;gap:30px;align-items:center;margin-top:40px}
+.phone{border:2px solid var(--cy);border-radius:34px;padding:18px;background:#040c15;box-shadow:0 0 60px rgba(0,229,255,.3);font-size:.75rem}
+.phone .hd{display:flex;justify-content:space-between;font-weight:800;margin-bottom:10px}
+.phone .ph{height:110px;border-radius:12px;background:radial-gradient(circle at 60% 35%,#1b7590,#04121b);margin-bottom:10px}
+.phone .row{background:#0a1a28;border-radius:10px;padding:8px 10px;margin-top:6px;display:flex;justify-content:space-between}
+.phone .row b{color:var(--cy)}.tag{color:var(--cy);font-weight:800}
+.vs{display:grid;grid-template-columns:1fr 2fr;gap:0;margin-top:40px;border:1px solid var(--ln);border-radius:18px;overflow:hidden}
+.vs>div{padding:34px}.vs .l{background:#050a10;opacity:.75}.vs .l h4{color:#7fa0aa}.vs h4{font-size:.9rem;letter-spacing:2px;margin-bottom:10px}
+.vs .r{background:radial-gradient(circle at 30% 20%,rgba(0,229,255,.18),transparent 60%),var(--bg2)}.vs .r h4{color:var(--cy)}
+.q{font-size:1.9rem;font-weight:800;margin-bottom:22px}
+.mini{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.mini div{border:1px solid var(--ln);border-radius:12px;padding:14px;font-size:.75rem;font-weight:800;text-align:center}
+.mini div b{display:block;color:var(--cy);font-size:.95rem;margin-bottom:4px}
+.fine{margin-top:22px;color:var(--mu);font-size:.9rem}
+.model{display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px;align-items:center;margin-top:40px}
+.node{border:1px solid var(--ln);border-radius:16px;padding:26px;text-align:center;background:var(--bg2)}
+.node.main{border-color:var(--cy);box-shadow:0 0 30px rgba(0,229,255,.35)}
+.node b{display:block;text-transform:uppercase;margin-bottom:4px}.node small{color:var(--mu)}
+.arr{color:var(--cy);text-align:center;font-size:1.6rem;margin:10px 0}
+.ring{width:min(360px,80vw);aspect-ratio:1;border-radius:50%;border:3px solid var(--cy);box-shadow:0 0 50px rgba(0,229,255,.5),inset 0 0 50px rgba(0,229,255,.2);display:grid;place-items:center;margin:auto;text-align:center;font-family:Anton;font-size:2.2rem;padding:30px;text-transform:uppercase}
+.orbit{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+.orbit span{border:1px solid var(--ln);border-radius:30px;padding:8px 20px;font-weight:800;font-size:.8rem;color:var(--cy)}
+.access{display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center}
+.since{border-left:3px solid var(--cy);padding-left:20px;font-size:1.5rem;margin-top:34px}
+.quad{position:relative;height:430px;border:1px solid var(--ln);border-radius:18px;margin-top:40px;background:linear-gradient(var(--ln),var(--ln)) 50% 0/1px 100% no-repeat,linear-gradient(var(--ln),var(--ln)) 0 50%/100% 1px no-repeat,var(--bg2)}
+.quad b{position:absolute;font-size:.75rem;letter-spacing:2px;color:var(--cy)}
+.dot{position:absolute;font-size:.85rem;color:#dbe6ee;transform:translate(-50%,-50%)}
+.dot:before{content:"●";color:#fff;margin-right:6px;font-size:.6rem}
+.dot.me{color:var(--cy);font-family:Anton;font-size:1.6rem;border:2px solid var(--cy);border-radius:50%;padding:22px 26px;box-shadow:0 0 30px var(--cy)}.dot.me:before{content:""}
+.funnel{display:flex;flex-direction:column;gap:8px;align-items:center}
+.funnel div{border:1px solid var(--cy);background:rgba(0,229,255,.06);padding:12px;text-align:center;font-weight:800;font-size:.8rem;text-transform:uppercase}
+.map{border:1px solid var(--ln);border-radius:18px;padding:30px;background:radial-gradient(circle at 30% 60%,rgba(0,229,255,.2),transparent 50%),var(--bg2)}
+.pins{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.pins span{border:1px solid var(--cy);border-radius:8px;padding:6px 12px;font-size:.75rem;font-weight:800}
+.ph-title{font-size:.8rem;color:var(--cy);font-weight:800;letter-spacing:2px;margin-bottom:6px}
+.team{display:flex;flex-wrap:wrap;justify-content:center;gap:34px;margin-top:44px}
+.member{width:190px;text-align:center}
+.av{width:120px;height:120px;border-radius:50%;margin:0 auto 12px;border:2px solid var(--cy);box-shadow:0 0 22px rgba(0,229,255,.45);display:grid;place-items:center;font-family:Anton;font-size:2rem;color:var(--cy);background:radial-gradient(circle at 50% 30%,#12506a,#04121b)}
+.member.ceo .av{width:150px;height:150px;font-size:2.6rem}
+.member h4{font-family:Anton;font-weight:400;font-size:1.05rem;text-transform:uppercase}.member h4 em{display:block;font-size:.85rem}
+.member p{font-size:.8rem;color:var(--mu)}
+.final{text-align:center;min-height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:radial-gradient(ellipse at 50% 85%,rgba(0,229,255,.35),transparent 55%),var(--bg)}
+.pill{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;margin:34px 0 20px;color:var(--cy);font-weight:800;letter-spacing:1px}
+footer{padding:30px;text-align:center;color:var(--mu);font-size:.8rem}
+@media(max-width:900px){.stats,.g4{grid-template-columns:1fr 1fr}.g3,.g2,.model,.access,.mock,.vs{grid-template-columns:1fr}.hero-art{display:none}nav ul li:not(:last-child):not(:nth-last-child(2)){display:none}.mini{grid-template-columns:1fr 1fr}.quad{height:520px}}
+
+/* Fotos Pexels (tinte azul/cian para armonizar con la paleta) */
+.a1{background:linear-gradient(rgba(0,100,130,.32),rgba(2,5,13,.72)),url(https://images.pexels.com/photos/5847498/pexels-photo-5847498.jpeg?auto=compress&cs=tinysrgb&w=1600) center/cover #040c15}
+.a2{background:linear-gradient(rgba(0,100,130,.32),rgba(2,5,13,.72)),url(https://images.pexels.com/photos/1452793/pexels-photo-1452793.jpeg?auto=compress&cs=tinysrgb&w=1600) center/cover #040c15}
+.a3{background:linear-gradient(rgba(0,100,130,.32),rgba(2,5,13,.72)),url(https://images.pexels.com/photos/7806499/pexels-photo-7806499.jpeg?auto=compress&cs=tinysrgb&w=1600) center/cover #040c15}
+#traction{background:linear-gradient(rgba(2,5,13,.6),rgba(2,5,13,.9)),url(https://images.pexels.com/photos/10063270/pexels-photo-10063270.jpeg?auto=compress&cs=tinysrgb&w=1600) center/cover #02050d!important}
+.final{background:linear-gradient(rgba(2,5,13,.55),rgba(2,5,13,.9)),url(https://images.pexels.com/photos/2263435/pexels-photo-2263435.jpeg?auto=compress&cs=tinysrgb&w=1600) center/cover #02050d}
+.vs .l{background:linear-gradient(rgba(5,10,16,.86),rgba(5,10,16,.92)),url(https://images.pexels.com/photos/23522931/pexels-photo-23522931.jpeg?auto=compress&cs=tinysrgb&w=1600) center/cover #050a10}
+.vs .r{background:linear-gradient(rgba(6,17,28,.8),rgba(2,5,13,.68)),url(https://images.pexels.com/photos/1387174/pexels-photo-1387174.jpeg?auto=compress&cs=tinysrgb&w=1600) center/cover #06111c}
+.map{background:linear-gradient(rgba(2,5,13,.6),rgba(2,5,13,.88)),url(https://images.pexels.com/photos/30651230/pexels-photo-30651230.jpeg?auto=compress&cs=tinysrgb&w=1600) center/cover #06111c}
+.hero-art{width:min(100%,340px)}
+.ph-main{aspect-ratio:3/4;border-radius:22px;background:linear-gradient(180deg,transparent 55%,rgba(2,5,13,.8)),linear-gradient(rgba(0,110,140,.28),rgba(0,110,140,.05)),url(https://images.pexels.com/photos/1452793/pexels-photo-1452793.jpeg?auto=compress&cs=tinysrgb&w=900) center/cover #0a1a28}
+</style>
+</head>
+<body>
+<nav>
+ <div class="logo">FAN<em>LAB</em></div>
+ <ul>
+  <li><a href="#problem" data-es="Problema">Problem</a></li>
+  <li><a href="#platform" data-es="Plataforma">Platform</a></li>
+  <li><a href="#traction" data-es="Tracción">Traction</a></li>
+  <li><a href="#model" data-es="Modelo">Model</a></li>
+  <li><a href="#team" data-es="Equipo">Team</a></li>
+  <li><a href="#cta" class="btn" style="padding:8px 18px;font-size:.8rem" data-es="Abre tu FanLab">Open your FanLab</a></li>
+  <li><button id="lang" aria-label="Language">ES</button></li>
+ </ul>
+</nav>
+
+<section class="hero crowd"><div class="w">
+ <div class="txt">
+  <h1 data-es="Convierte superfans en <em>ingresos sostenibles.</em>">Turn superfans into <em>sustainable revenue.</em></h1>
+  <div class="bar"></div>
+  <p class="sub" data-es="La plataforma de monetización de fans para artistas, clubes deportivos y marcas de entretenimiento.">The fan monetization platform for artists, sports clubs and entertainment brands.</p>
+  <a href="#cta" class="btn" data-es="Abre tu FanLab ahora">Open your FanLab now</a>
+ </div>
+ <div class="hero-art" aria-hidden="true">
+  <div class="ph-main"></div>
+  <div class="chip"><span>VIP MEMBER</span><b>★</b></div><div class="chip"><span>Behind the Scenes</span><b>▶</b></div><div class="chip"><span>Presale Access</span><b>›</b></div></div>
+ <div class="stats">
+  <div class="stat"><b>40K+</b><span data-es="Fans registrados">Registered Fans</span></div>
+  <div class="stat"><b>20K+</b><span data-es="Miembros de pago">Paid Members</span></div>
+  <div class="stat"><b>1MM+</b><span data-es="Personas alcanzadas">People Reached</span></div>
+  <div class="stat"><b>US$1MM+</b><span data-es="Ingresos validados">Validated Revenue</span></div>
+ </div>
+</div></section>
+
+<section id="problem"><div class="w">
+ <h2 data-es="El negocio de la música cambió. <em>La relación con el fan</em> no.">The music business changed. <em>The fan relationship</em> didn't.</h2>
+ <p style="margin-top:22px;max-width:640px;font-size:1.15rem" data-es="La música pasó de la propiedad al acceso. Los fans pasaron de consumidores a comunidades. Pero los artistas aún no tienen una infraestructura escalable para monetizar a sus superfans.">Music moved from ownership to access. Fans moved from consumers to communities. But artists still don't have a scalable infrastructure to monetize their superfans.</p>
+ <div class="flow"><div data-es="MÚSICA FÍSICA">PHYSICAL MUSIC</div><span>➜</span><div>STREAMING</div><span>➜</span><div data-es="REDES SOCIALES">SOCIAL MEDIA</div><span>➜</span><div data-es="RELACIÓN CON EL FAN">FAN RELATIONSHIP</div></div>
+ <p class="big-q" data-es="El superfan es el activo menos monetizado del entretenimiento.">The superfan is the most undermonetized asset in entertainment.</p>
+ <div class="bar"></div>
+
+ <h2 style="margin-top:80px" data-es="Los fans quieren <em>más.</em> Los artistas necesitan <em>más</em> ingresos.">Fans want <em>more.</em> Artists need <em>more</em> revenue.</h2>
+ <div class="grid g3">
+  <div class="card"><div class="art a1"></div><div class="ic">▶</div><h3 data-es="Contenido">Content</h3><p data-es="Las redes sociales monetizan atención, no lealtad.">Social platforms monetize attention, not loyalty.</p></div>
+  <div class="card"><div class="art a2"></div><div class="ic">◎</div><h3 data-es="Comunidad">Community</h3><p data-es="Los fan clubs tradicionales son fragmentados, manuales y difíciles de escalar.">Traditional fan clubs are fragmented, manual and difficult to scale.</p></div>
+  <div class="card"><div class="art a3"></div><div class="ic">★</div><h3 data-es="Experiencias">Experiences</h3><p data-es="El acceso exclusivo existe, pero no hay una infraestructura de monetización unificada.">Exclusive access exists, but there is no unified monetization infrastructure.</p></div>
+ </div>
+ <p class="big-q center" style="color:#fff;margin-top:44px" data-es="No existe un <em>sistema operativo global</em> para el <em>superfan.</em>">There is no <em>global operating system</em> for the <em>superfan.</em></p>
+</div></section>
+
+<section id="platform"><div class="w">
+ <h2 data-es="Conoce FanLab. La plataforma de monetización del <em>superfan.</em>">Meet FanLab. The <em>superfan</em> monetization platform.</h2>
+ <p style="margin-top:14px;font-size:1.15rem" data-es="Una membresía. Cuatro formas de crear valor.">One membership. Four ways to create value.</p>
+ <div class="mock">
+  <div class="grid" style="margin:0">
+   <div class="card"><div class="ic">▶</div><h3 data-es="Contenido exclusivo">Exclusive content</h3><p data-es="Contenido detrás de cámaras, publicaciones y acceso digital.">Behind-the-scenes content, posts and digital access.</p></div>
+   <div class="card"><div class="ic">🎁</div><h3 data-es="Premios">Prizes</h3><p data-es="Sorteos, merchandising firmado y experiencias de colección.">Giveaways, signed merchandise and collectible experiences.</p></div>
+  </div>
+  <div class="phone">
+   <div class="hd"><span>FANLAB</span><span>9:41</span></div>
+   <div class="ph"></div><div class="tag">ARTIST FAN CLUB · VIP MEMBER</div>
+   <div class="row"><span>Behind the Scenes</span><b>▶</b></div>
+   <div class="row"><span>Studio Session</span><b>▶</b></div>
+   <div class="row"><span>10% Merch Discount</span><b>›</b></div>
+   <div class="row"><span>Presale Access</span><b>›</b></div>
+  </div>
+  <div class="grid" style="margin:0">
+   <div class="card"><div class="ic">%</div><h3 data-es="Recompensas">Rewards</h3><p data-es="Descuentos y beneficios que crean valor tangible.">Discounts and benefits that create tangible value.</p></div>
+   <div class="card"><div class="ic">★</div><h3 data-es="Experiencias">Experiences</h3><p data-es="Meet & greets, acceso backstage, eventos VIP y momentos únicos.">Meet &amp; greets, backstage access, VIP events and unique moments.</p></div>
+  </div>
+ </div>
+
+ <h2 style="margin-top:90px" data-es="FanLab no se trata de pedirle a los fans que apoyen a un artista. Se trata de darles <em>una razón para pertenecer.</em>">FanLab isn't about asking fans to support an artist. It's about <em>giving them a reason to belong.</em></h2>
+ <div class="vs">
+  <div class="l"><h4 data-es="MONETIZACIÓN TRADICIONAL DE CREADORES">TRADITIONAL CREATOR MONETIZATION</h4><div class="q" data-es="“Apóyame.”">“Support me.”</div><p style="color:#7fa0aa" data-es="¿Te gusta mi trabajo? Cualquier apoyo significa mucho.">Love my work? Any support means a lot.</p></div>
+  <div class="r"><h4>FANLAB</h4><div class="q" data-es="“Entra.”">“Come inside.”</div>
+   <div class="mini">
+    <div><b data-es="CONTENIDO">CONTENT</b><span data-es="ACCESO EXCLUSIVO DETRÁS DE CÁMARAS">EXCLUSIVE ACCESS BEHIND THE SCENES</span></div>
+    <div><b data-es="RECOMPENSAS">REWARDS</b><span data-es="DESCUENTOS Y BENEFICIOS">DISCOUNTS &amp; MEMBER BENEFITS</span></div>
+    <div><b data-es="PREMIOS">PRIZES</b><span data-es="MERCH FIRMADO Y SORTEOS">SIGNED MERCH &amp; GIVEAWAYS</span></div>
+    <div><b data-es="EXPERIENCIAS">EXPERIENCES</b><span data-es="EVENTOS VIP Y ACCESO BACKSTAGE">VIP EVENTS &amp; BACKSTAGE ACCESS</span></div>
+   </div>
+  </div>
+ </div>
+ <p class="fine" data-es="Los fans pagan en promedio US$3–US$5 al mes.">Fans pay US$3–US$5/month on average.</p>
+</div></section>
+
+<section id="traction" class="crowd" style="background:conic-gradient(from 180deg at 50% -20%,transparent,rgba(0,229,255,.22) 8%,transparent 16%,rgba(0,229,255,.16) 30%,transparent 40%),var(--bg)"><div class="w center">
+ <h2 data-es="Esto no es una idea. <em>Ya probamos el modelo.</em>">This is not an idea. <em>We've already proven the model.</em></h2>
+ <div class="stats big" style="margin-top:60px;text-align:left">
+  <div class="stat"><b>40K+</b><span data-es="FANS REGISTRADOS">REGISTERED FANS</span></div>
+  <div class="stat"><b>20K+</b><span data-es="MIEMBROS DE PAGO">PAID MEMBERS</span></div>
+  <div class="stat"><b>1MM+</b><span data-es="PERSONAS ALCANZADAS">PEOPLE REACHED</span></div>
+  <div class="stat"><b>US$1MM+</b><span data-es="INGRESOS ANUALES VALIDADOS">VALIDATED ANNUAL REVENUE</span></div>
+ </div>
+ <p class="fine" style="font-size:1.1rem;margin-top:44px" data-es="El modelo ya ha generado comunidades de pago alrededor de artistas, marcas y deportes.">The model has already generated paying communities around artists, brands and sports.</p>
+</div></section>
+
+<section id="model"><div class="w">
+ <h2 data-es="Un modelo simple con <em>múltiples</em> fuentes de ingreso.">A simple model with <em>multiple</em> revenue streams.</h2>
+ <div class="model">
+  <div class="node"><b data-es="Fans">Fans</b><small data-es="Pagan US$3–US$5/mes">Pay US$3–US$5/month</small></div>
+  <div class="node main"><b>FanLab Platform</b><small data-es="10%–20% de comisión por transacción">10%–20% transaction commission</small></div>
+  <div class="node"><b data-es="Artistas / Clubes / Creadores">Artists / Clubs / Creators</b><small data-es="Ingresos recurrentes de fans">Recurring fan revenue</small></div>
+ </div>
+ <div class="arr">▼ B2B2C ▼</div>
+ <div class="model" style="grid-template-columns:1fr 1fr">
+  <div class="node"><b data-es="Marcas">Brands</b><small data-es="Recompensas + patrocinios + experiencias">Rewards + sponsorships + experiences</small></div>
+  <div class="node"><b data-es="Fans">Fans</b><small>&nbsp;</small></div>
+ </div>
+ <p class="fine center" data-es="Suscripciones recurrentes + transacciones + participación de marcas.">Recurring subscriptions + transactions + brand participation.</p>
+</div></section>
+
+<section><div class="w access">
+ <div>
+  <h2 data-es="Nuestra ventaja injusta es el <em>acceso.</em>">Our unfair advantage is <em>access.</em></h2>
+  <p style="margin-top:14px;font-size:1.15rem" data-es="Más de 25 años dentro del ecosistema global de música y entretenimiento.">25+ years inside the global music and entertainment ecosystem.</p>
+  <div class="bar"></div>
+  <p data-es="Relaciones profundas con artistas, sellos, DSPs, medios, marcas y ejecutivos del entretenimiento.">Deep relationships across artists, labels, DSPs, media, brands and entertainment executives.</p>
+  <p class="since" data-es="FanLab fue concebido en <em>2010 — antes de Patreon y OnlyFans.</em>">FanLab was conceived in <em>2010 — before Patreon and OnlyFans.</em></p>
+ </div>
+ <div><div class="ring">MARIO<br>MELGAR</div>
+  <div class="orbit"><span data-es="ARTISTAS">ARTISTS</span><span data-es="INDUSTRIA MUSICAL">MUSIC INDUSTRY</span><span data-es="CLUBES DEPORTIVOS">SPORTS CLUBS</span><span data-es="FANS">FANS</span><span data-es="MERCADOS GLOBALES">GLOBAL MARKETS</span><span>LATAM</span><span data-es="MEDIOS">MEDIA</span><span data-es="MARCAS">BRANDS</span></div></div>
+</div></section>
+
+<section><div class="w">
+ <h2 data-es="No competimos por atención. <em>Monetizamos la pertenencia.</em>">We don't compete for attention. <em>We monetize belonging.</em></h2>
+ <div class="quad">
+  <b style="top:12px;left:50%;transform:translateX(-50%)">SUPERFAN</b><b style="bottom:12px;left:50%;transform:translateX(-50%)" data-es="AUDIENCIA">AUDIENCE</b>
+  <b style="left:14px;top:50%" data-es="◄ CONTENIDO">◄ CONTENT</b><b style="right:14px;top:50%" data-es="EXPERIENCIAS ►">EXPERIENCES ►</b>
+  <span class="dot me" style="left:80%;top:20%">FanLab</span>
+  <span class="dot" style="left:58%;top:24%" data-es="Fan Clubs tradicionales">Traditional Fan Clubs</span>
+  <span class="dot" style="left:66%;top:38%">Patreon</span>
+  <span class="dot" style="left:25%;top:60%">YouTube</span>
+  <span class="dot" style="left:34%;top:70%">TikTok</span>
+  <span class="dot" style="left:31%;top:82%">Instagram</span>
+ </div>
+ <p class="fine center" data-es="FanLab combina membresía recurrente, contenido exclusivo, recompensas y experiencias reales en una sola plataforma.">FanLab combines recurring membership, exclusive content, rewards and real-world experiences in one platform.</p>
+</div></section>
+
+<section><div class="w">
+ <h2 class="center" data-es="La IA hará más inteligente a cada fan club.">AI will make every fan club smarter.</h2>
+ <p class="center" style="margin-top:14px;font-size:1.15rem" data-es="De una plataforma de membresía a un motor inteligente de relación con fans.">From a membership platform to an intelligent fan relationship engine.</p>
+ <div class="grid g4">
+  <div class="card"><h3 data-es="Inteligencia de fans">Fan intelligence</h3><p data-es="Entiende el comportamiento, el engagement y el valor de cada fan.">Understand fan behavior, engagement and value.</p></div>
+  <div class="card"><h3 data-es="Personalización">Personalization</h3><p data-es="Recomienda contenido, recompensas y experiencias a cada fan.">Recommend content, rewards and experiences to each fan.</p></div>
+  <div class="card"><h3 data-es="Predicción de churn">Churn prediction</h3><p data-es="Identifica fans en riesgo de irse y activa acciones de retención.">Identify fans at risk of leaving and trigger retention actions.</p></div>
+  <div class="card"><h3 data-es="Optimización de ingresos">Revenue optimization</h3><p data-es="Recomienda ofertas, precios, recompensas y oportunidades con marcas.">Recommend offers, pricing, rewards and brand opportunities.</p></div>
+ </div>
+</div></section>
+
+<section><div class="w">
+ <h2 data-es="Todo artista tiene una fanbase. La mayoría no tiene un <em>negocio de fans.</em>">Every artist has a fanbase. Most don't have a <em>fan business.</em></h2>
+ <div class="grid g2" style="align-items:center">
+  <div class="map"><div class="pins"><span>UNITED STATES</span><span>MEXICO</span><span>LATIN AMERICA</span><span>BRAZIL</span><span>EUROPE</span><span>MIDDLE EAST</span></div>
+   <p style="margin-top:30px;font-size:1.3rem" data-es="FanLab está construido para ser la <em>capa de infraestructura</em> de la monetización de fans a nivel global.">FanLab is built to become the <em>infrastructure layer for fan monetization</em> globally.</p></div>
+  <div class="funnel"><div style="width:100%" data-es="Audiencia global de entretenimiento">Global entertainment audience</div><div style="width:82%" data-es="Comunidades de fans">Fan communities</div><div style="width:64%">Superfans</div><div style="width:46%" data-es="Membresías de pago">Paid memberships</div><div style="width:100%;color:var(--cy)" data-es="Recompensas + experiencias">Rewards + experiences</div></div>
+ </div>
+
+ <h2 style="margin-top:90px" data-es="Empieza donde tenemos acceso. Escala donde la demanda es <em>global.</em>">Start where we have access. Scale where the demand is <em>global.</em></h2>
+ <div class="grid g3">
+  <div class="card"><div class="ph-title" data-es="FASE 1">PHASE 1</div><h3>LATAM</h3><p style="color:#fff">Peru → Mexico → Brazil</p><p data-es="Aprovecha relaciones existentes con artistas, medios, deportes y marcas.">Leverage existing artist, media, sports and brand relationships.</p></div>
+  <div class="card"><div class="ph-title" data-es="FASE 2">PHASE 2</div><h3 data-es="EE. UU.">US</h3><p data-es="Expansión al ecosistema de música latina y economía de creadores.">Expand into the Latin music and creator economy ecosystem.</p></div>
+  <div class="card"><div class="ph-title" data-es="FASE 3">PHASE 3</div><h3>Global</h3><p style="color:#fff" data-es="Europa + Medio Oriente + Asia">Europe + Middle East + Asia</p></div>
+ </div>
+ <p class="fine center" data-es="Modelo de distribución B2B2C: artista/club → fanbase → miembros FanLab → participación de marcas → más valor para el fan → más miembros.">B2B2C distribution model: artist/club → fanbase → FanLab members → brand participation → more fan value → more members.</p>
+</div></section>
+
+<section id="team"><div class="w center">
+ <h2 data-es="Construido por gente que <em>conoce el negocio.</em>">Built by people who know the <em>business.</em></h2>
+ <div class="team">
+  <div class="member ceo"><div class="av">MM</div><h4>Mario Melgar<em>CEO</em></h4><p data-es="Ex-Director de Sony Music, entretenimiento, A&R, crecimiento, monetización de fans y alianzas globales.">Ex-Sony Music Director, entertainment, A&amp;R, growth, fan monetization and global partnerships.</p></div>
+  <div class="member"><div class="av">RC</div><h4>Ronald Condori<em>CTO</em></h4><p data-es="Tecnología y arquitectura de plataforma.">Technology and platform architecture.</p></div>
+  <div class="member"><div class="av">NK</div><h4>Natalia Kong<em>COO</em></h4><p data-es="Operaciones y ejecución del negocio.">Operations and business execution.</p></div>
+  <div class="member"><div class="av">PA</div><h4>Pierre Aguilar<em>CCO</em></h4><p data-es="Estrategia comercial y alianzas.">Commercial strategy and partnerships.</p></div>
+  <div class="member"><div class="av">EH</div><h4>Erina Higa<em data-es="UX Design">UX Design</em></h4><p data-es="Producto y experiencia de usuario.">Product and user experience.</p></div>
+  <div class="member"><div class="av">MM</div><h4>Michelle Mendoza<em data-es="Éxito de Artistas">Artist Success</em></h4><p data-es="Relaciones y éxito de artistas.">Artist relationships and success.</p></div>
+  <div class="member"><div class="av">JP</div><h4>John Portuguez<em data-es="Audiovisual">Audiovisual</em></h4><p data-es="Producción de contenido.">Content production.</p></div>
+  <div class="member"><div class="av">MF</div><h4>Mango Fernández<em>CM</em></h4><p data-es="Comunidad y engagement de fans.">Community and fan engagement.</p></div>
+ </div>
+</div></section>
+
+<section id="cta" class="final crowd">
+ <h2 data-es="Algún día, todo artista tendrá un <em>FanLab.</em>">One day, every artist will have a <em>FanLab.</em></h2>
+ <p style="margin-top:18px;max-width:560px;font-size:1.15rem" data-es="Un mundo donde cada artista puede convertir el amor de sus superfans en un negocio sostenible.">A world where every artist can turn the love of their superfans into a sustainable business.</p>
+ <div class="pill"><span data-es="PERTENECE.">BELONG.</span><span data-es="VIVE.">EXPERIENCE.</span><span data-es="MONETIZA.">MONETIZE.</span></div>
+ <a id="mail" class="btn" style="font-size:1.2rem;padding:18px 42px" href="mailto:info@fanlab.club" data-es="ABRE TU FANLAB AHORA">OPEN YOUR FANLAB NOW</a>
+ <p class="fine" data-es="ESTAMOS CONSTRUYENDO LA INFRAESTRUCTURA GLOBAL PARA SUPERFANS.">WE'RE BUILDING THE GLOBAL INFRASTRUCTURE FOR SUPERFANS.</p>
+</section>
+<footer>© 2026 FanLab · info@fanlab.club</footer>
+
+<script>
+(function(){
+ var els=document.querySelectorAll('[data-es]'),lang='en',btn=document.getElementById('lang'),mail=document.getElementById('mail');
+ els.forEach(function(e){e.setAttribute('data-en',e.innerHTML)});
+ var subj={en:'I want to open my FanLab',es:'Quiero abrir mi FanLab'},body={en:'Hi FanLab team, I would like to open my FanLab. Please contact me.',es:'Hola equipo FanLab, quiero abrir mi FanLab. Por favor, contáctenme.'};
+ function set(l){
+  lang=l;document.documentElement.lang=l;
+  els.forEach(function(e){e.innerHTML=e.getAttribute('data-'+l)});
+  btn.textContent=l==='en'?'ES':'EN';
+  mail.href='mailto:info@fanlab.club?subject='+encodeURIComponent(subj[l])+'&body='+encodeURIComponent(body[l]);
+  try{localStorage.setItem('fl-lang',l)}catch(e){}
+ }
+ btn.addEventListener('click',function(){set(lang==='en'?'es':'en')});
+ var s;try{s=localStorage.getItem('fl-lang')}catch(e){}
+ set(s||((navigator.language||'en').slice(0,2)==='es'?'es':'en'));
+})();
+</script>
+</body>
+</html>
