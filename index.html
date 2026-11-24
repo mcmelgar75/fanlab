@@ -549,7 +549,10 @@
     /* Carrusel circular. Las copias solo sirven para dar continuidad visual. */
     function initializeCarousel() {
       const track = document.querySelector('#club-track');
-      const originals = Array.from(track.children);
+      const originals = Array.from(track.children); for (const card of originals) {
+  card.target = '_blank';
+  card.rel = 'noopener';
+}
       const controls = document.querySelector('.controls');
       if (originals.length < 2) return;
 
