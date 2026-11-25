@@ -1,8 +1,275 @@
 <!doctype html>
-<html lang="es">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Varados | FanLab</title>
-<h1>Varados</h1>
-<p>¡Bienvenidos, Guías! Muy pronto abriremos nuestro club oficial.</p>
+<html lang="es-PE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#151310">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Varados">
+  <meta name="description" content="La casa de los Guías. Ingresa al FanClub de Varados.">
+  <title>Varados · FanClub</title>
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23151310'/%3E%3Cpath d='M17 24h15l18 46 18-46h15L58 79H42z' fill='%23f4c476'/%3E%3C/svg%3E">
+
+  <script>
+    // Captura la invitación de instalación aunque llegue antes de cargar el botón.
+    let installPrompt = null;
+    let installedThisSession = false;
+
+    window.addEventListener("beforeinstallprompt", event => {
+      event.preventDefault();
+      installPrompt = event;
+      installedThisSession = false;
+    });
+
+    window.addEventListener("appinstalled", () => {
+      installedThisSession = true;
+      installPrompt = null;
+    });
+
+    // Genera los íconos PNG y el manifiesto dentro del mismo HTML.
+    function makeIcon(size) {
+      const canvas = document.createElement("canvas");
+      canvas.width = canvas.height = size;
+      const ctx = canvas.getContext("2d");
+      ctx.scale(size / 100, size / 100);
+      ctx.fillStyle = "#151310";
+      ctx.fillRect(0, 0, 100, 100);
+      ctx.fillStyle = "#f4c476";
+      ctx.beginPath();
+      ctx.moveTo(17, 24);
+      ctx.lineTo(32, 24);
+      ctx.lineTo(50, 70);
+      ctx.lineTo(68, 24);
+      ctx.lineTo(83, 24);
+      ctx.lineTo(58, 79);
+      ctx.lineTo(42, 79);
+      ctx.closePath();
+      ctx.fill();
+      return canvas.toDataURL("image/png");
+    }
+
+    function addLink(rel, href) {
+      const link = document.createElement("link");
+      link.rel = rel;
+      link.href = href;
+      document.head.append(link);
+    }
+
+    const appURL = new URL("/varados/", location.origin).href;
+    const manifest = {
+      id: appURL,
+      name: "Varados FanClub",
+      short_name: "Varados",
+      lang: "es-PE",
+      start_url: appURL,
+      scope: appURL,
+      display: "standalone",
+      background_color: "#151310",
+      theme_color: "#151310",
+      icons: [192, 512].map(size => ({
+        src: makeIcon(size),
+        sizes: `${size}x${size}`,
+        type: "image/png",
+        purpose: "any"
+      }))
+    };
+
+    addLink("apple-touch-icon", makeIcon(180));
+    addLink("manifest", URL.createObjectURL(
+      new Blob([JSON.stringify(manifest)], { type: "application/manifest+json" })
+    ));
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #151310;
+      --ink: #fff8ed;
+      --gold: #f4c476;
+      --line: #514a40;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    main {
+      width: min(100% - 32px, 900px);
+      margin: 0 auto;
+      padding: clamp(20px, 4vw, 48px) 0 max(32px, env(safe-area-inset-bottom));
+    }
+
+    header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 10vw, 6.4rem);
+      font-weight: 900;
+      line-height: .9;
+      letter-spacing: -.075em;
+    }
+
+    .credit {
+      color: var(--gold);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      white-space: nowrap;
+    }
+
+    .hero {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #302b24;
+    }
+
+    .hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .actions {
+      display: grid;
+      gap: 12px;
+      width: min(100%, 370px);
+      margin: clamp(20px, 4vw, 32px) auto 0;
+    }
+
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 52px;
+      padding: 12px 20px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: transparent;
+      color: var(--ink);
+      font: 700 1rem/1.3 "Helvetica Neue", Arial, sans-serif;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .primary {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: #20190e;
+    }
+
+    .button:hover { border-color: var(--gold); }
+    .primary:hover { background: #ffd694; }
+    .button:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+
+    #status {
+      margin: 4px 0 0;
+      color: #e8dcc9;
+      text-align: center;
+      font-size: .95rem;
+      line-height: 1.5;
+    }
+
+    #status:empty { display: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>VARADOS</h1>
+      <span class="credit">FANCLUB</span>
+    </header>
+
+    <figure class="hero">
+      <img
+        src="https://peru21.pe/sites/default/efsfiles/2023-11/THY64G5G7NFCRO5CIZAMABXVPM.jpg"
+        alt="Los integrantes de Varados"
+        fetchpriority="high">
+    </figure>
+
+    <div class="actions">
+      <a class="button primary" href="https://varados.fanlab.club">
+        Ingresar al FanClub
+      </a>
+      <button class="button" id="install" type="button">Instalar App</button>
+      <p id="status" role="status" aria-live="polite"></p>
+    </div>
+  </main>
+
+  <script>
+    const button = document.getElementById("install");
+    const status = document.getElementById("status");
+    const alreadyInstalled = "La App ya está instalada en este dispositivo.";
+
+    function isInstalled() {
+      return installedThisSession ||
+        navigator.standalone === true ||
+        window.matchMedia("(display-mode: standalone)").matches;
+    }
+
+    function installationHelp() {
+      const ua = navigator.userAgent;
+      const isIOS = /iPad|iPhone|iPod/i.test(ua) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+      if (isIOS) {
+        return "Abre esta página en Safari, toca Compartir y elige “Agregar a inicio”. Si aparece “Abrir como app web”, actívalo. Luego toca Agregar.";
+      }
+      if (/Android/i.test(ua)) {
+        return "Abre esta página en Chrome, toca el menú ⋮ y elige “Instalar aplicación” o “Agregar a la pantalla principal”.";
+      }
+      if (/Macintosh/i.test(ua) && /Safari/i.test(ua) && !/Chrome|Chromium|Edg/i.test(ua)) {
+        return "En Safari, abre Archivo y selecciona “Añadir al Dock” si tu versión ofrece esa opción.";
+      }
+      return "Busca el ícono de instalación en la barra de direcciones o la opción de instalar en el menú del navegador. Si no aparece, abre esta página en Chrome o Edge.";
+    }
+
+    window.addEventListener("appinstalled", () => {
+      status.textContent = alreadyInstalled;
+    });
+
+    button.addEventListener("click", async () => {
+      if (isInstalled()) {
+        status.textContent = alreadyInstalled;
+        return;
+      }
+
+      if (!installPrompt) {
+        status.textContent = installationHelp();
+        return;
+      }
+
+      const prompt = installPrompt;
+      installPrompt = null;
+      button.disabled = true;
+      status.textContent = "";
+
+      try {
+        await prompt.prompt();
+        const choice = await prompt.userChoice;
+        if (choice.outcome === "dismissed") {
+          status.textContent = "Cancelaste la instalación. Puedes volver a intentarlo cuando quieras.";
+        }
+      } catch {
+        status.textContent = installationHelp();
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
 </html>
